@@ -22,9 +22,9 @@
         <img src="img/lizu lizu.png" class="slide" alt="Postać 2" />
       </div>
       <div class="dots">
-        <span class="dot active" onclick="showSlide(0)"></span>
-        <span class="dot" onclick="showSlide(1)"></span>
-        <span class="dot" onclick="showSlide(2)"></span>
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
       </div>
     </div>
     <br>
@@ -33,7 +33,14 @@
     <h2>Lilith: </h2>
     <div class="slider-container">
       <div class="slider">
-        <img src="img/f1a5f94b9d18ac7499348c8ef75209e7.jpg" class="slide active"/>
+        <img src="img/f1a5f94b9d18ac7499348c8ef75209e7.jpg" class="slide active" alt="Postać 3"/>
+        <img src="img/2222.png" class="slide" alt="Postać 1" />
+        <img src="img/Copilot_20260411_100428.png" class="slide" alt="Postać 2" />
+      </div>
+      <div class="dots">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
       </div>
     </div>
 
@@ -43,18 +50,30 @@
   </div>
 
   <script src="script.js"></script>
-  <script>
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-    const dots = document.querySelectorAll('.dot');
+    <script>
+      const sliders = document.querySelectorAll('.slider-container');
 
-    function showSlide(index) {
-      slides[currentSlide].classList.remove('active');
-      dots[currentSlide].classList.remove('active');
-      currentSlide = index;
-      slides[currentSlide].classList.add('active');
-      dots[currentSlide].classList.add('active');
-    }
-  </script>
+      sliders.forEach((sliderContainer) => {
+        let currentSlide = 0;
+
+        const slides = sliderContainer.querySelectorAll('.slide');
+        const dots = sliderContainer.querySelectorAll('.dot');
+
+        function showSlide(index) {
+          slides[currentSlide].classList.remove('active');
+          dots[currentSlide].classList.remove('active');
+
+          currentSlide = index;
+
+          slides[currentSlide].classList.add('active');
+          dots[currentSlide].classList.add('active');
+        }
+
+        // przypisanie kliknięć do kropek
+          dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => showSlide(index));
+          });
+      });
+    </script>
 </body>
 </html>
